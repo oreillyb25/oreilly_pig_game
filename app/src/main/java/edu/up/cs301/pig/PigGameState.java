@@ -22,5 +22,14 @@ public class PigGameState extends GameState {
     }
     //public GameState(int initId, int initPlayerZero, int initPlayerOne, int initTotal, int initCurr){
 
-    //}
+    //Copy Constructor
+    public PigGameState(PigGameState original) {
+        playerId = original.playerId;
+        player_zero_score = original.player_zero_score;
+        player_one_score = original.player_one_score;
+        curr_run_total = original.curr_run_total;
+        curr_value_die = original.curr_value_die;
+    }
+
+    }
 }
