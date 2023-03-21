@@ -54,4 +54,25 @@ public class PigGameState extends GameState {
     public int getCurrValueDie() {
         return curr_value_die;
     }
+
+    public void setPlayerId(int init) {
+        playerId = init;
+    }
+
+    public void setPlayerZeroScore(int init) {
+        player_zero_score = init;
+    }
+
+    public void setPlayerOneScore(int init) {
+        player_one_score = init;
+    }
+
+    public void setCurrRunTotal(int init) {
+        curr_run_total = init;
+    }
+
+    public void setCurrValueDie (int init) {
+         curr_value_die = init;
+    }
+
 }
