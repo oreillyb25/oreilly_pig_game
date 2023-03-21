@@ -18,7 +18,7 @@ public class PigGameState extends GameState {
         player_zero_score = 0;
         player_one_score = 0;
         curr_run_total = 0;
-        curr_value_die = rand.nextInt(6)+1;
+        //curr_value_die = rand.nextInt(6)+1;
     }
     //public GameState(int initId, int initPlayerZero, int initPlayerOne, int initTotal, int initCurr){
 
@@ -31,7 +31,7 @@ public class PigGameState extends GameState {
         curr_value_die = original.curr_value_die;
     }
 
-    }
+
     //}
 
 
