@@ -31,7 +31,7 @@ public class PigGameState extends GameState {
         curr_value_die = original.curr_value_die;
     }
 
-    }
+
     //}
 
 
