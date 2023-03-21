@@ -5,11 +5,11 @@ import java.util.Random;
 import edu.up.cs301.game.infoMsg.GameState;
 
 public class PigGameState extends GameState {
-    int playerId;
-    int player_zero_score;
-    int player_one_score;
-    int curr_run_total;
-    int curr_value_die;
+    private int playerId;
+    private int player_zero_score;
+    private int player_one_score;
+    private int curr_run_total;
+    private int curr_value_die;
     Random rand = new Random();
 
     public PigGameState(){
@@ -31,5 +31,27 @@ public class PigGameState extends GameState {
         curr_value_die = original.curr_value_die;
     }
 
+    }
+    //}
+
+
+    public int getPlayerId() {
+        return playerId;
+    }
+
+    public int getPlayerZeroScore() {
+        return player_zero_score;
+    }
+
+    public int getPlayerOneScore() {
+        return player_one_score;
+    }
+
+    public int getCurrRunTotal() {
+        return curr_run_total;
+    }
+
+    public int getCurrValueDie() {
+        return curr_value_die;
     }
 }
