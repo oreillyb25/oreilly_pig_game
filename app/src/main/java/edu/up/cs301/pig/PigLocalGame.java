@@ -57,6 +57,8 @@ public class PigLocalGame extends LocalGame {
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
         //TODO  You will implement this method
+        PigGameState copy = new PigGameState(pgs);
+        p.sendInfo(copy);
     }//sendUpdatedSate
 
     /**
