@@ -19,7 +19,8 @@ import java.util.Random;
  */
 public class PigLocalGame extends LocalGame {
 
-        PigGameState pgs;
+    PigGameState pgs;
+
     /**
      * This ctor creates a new game state
      */
@@ -34,10 +35,9 @@ public class PigLocalGame extends LocalGame {
     @Override
     protected boolean canMove(int playerIdx) {
         //TODO  You will implement this method
-        if(playerIdx == pgs.getPlayerId()){
+        if (playerIdx == pgs.getPlayerId()) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -50,38 +50,41 @@ public class PigLocalGame extends LocalGame {
     @Override
     protected boolean makeMove(GameAction action) {
         //TODO  You will implement this method
-        if(action instanceof PigHoldAction) {
+        int players = super.players.length;
+        if (action instanceof PigHoldAction) {
             if (pgs.getPlayerId() == 0) {
                 pgs.setPlayerZeroScore(pgs.getCurrRunTotal());
-                pgs.setPlayerId(1);
-            }
-            else {
+                if (players == 2) {
+                    pgs.setPlayerId(1);
+                }
+            } else {
                 pgs.setPlayerOneScore(pgs.getCurrRunTotal());
-                pgs.setPlayerId(0);
+                if (players == 2) {
+                    pgs.setPlayerId(0);
+                }
             }
             pgs.setCurrRunTotal(0);
             return true;
-        }
-        else if(action instanceof PigRollAction) {
+        } else if (action instanceof PigRollAction) {
             Random rand = new Random();
             int dieVal;
-            if(pgs.getPlayerId() == 0) {
+            if (pgs.getPlayerId() == 0) {
                 dieVal = rand.nextInt(6) + 1;
                 if (dieVal != 1) {
                     pgs.setCurrRunTotal(pgs.getCurrRunTotal() + dieVal);
-                }
-                else {
+                } else {
                     pgs.setCurrRunTotal(0);
-                    if (pgs.getPlayerId() == 0) {
-                        pgs.setPlayerId(1);
-                    } else {
-                        pgs.setPlayerId(0);
+                    if (players == 2) {
+                        if (pgs.getPlayerId() == 0) {
+                            pgs.setPlayerId(1);
+                        } else {
+                            pgs.setPlayerId(0);
+                        }
                     }
                 }
             }
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }//makeMove
@@ -99,20 +102,19 @@ public class PigLocalGame extends LocalGame {
     /**
      * Check if the game is over
      *
-     * @return
-     * 		a message that tells who has won the game, or null if the
-     * 		game is not over
+     * @return a message that tells who has won the game, or null if the
+     * game is not over
      */
     @Override
     protected String checkIfGameOver() {
         //TODO  You will implement this method
-        String still_playing= "game still playing...";
+        String still_playing = "game still playing...";
         String win;
-        if(pgs.getPlayerOneScore() >= 50){
+        if (pgs.getPlayerOneScore() >= 50) {
             win = pgs.getPlayerId() + "has won, game over!";
             return win;
         }
-        if(pgs.getPlayerZeroScore() >= 50){
+        if (pgs.getPlayerZeroScore() >= 50) {
             win = pgs.getPlayerId() + "has won, game over!";
             return win;
         }
