@@ -67,26 +67,27 @@ public class PigLocalGame extends LocalGame {
             return true;
         } else if (action instanceof PigRollAction) {
             Random rand = new Random();
-            int dieVal;
+            //int dieVal;
             if (pgs.getPlayerId() == 0) {
-                dieVal = rand.nextInt(6) + 1;
-                if (dieVal != 1) {
-                    pgs.setCurrRunTotal(pgs.getCurrRunTotal() + dieVal);
-                } else {
-                    pgs.setCurrRunTotal(0);
-                    if (players == 2) {
-                        if (pgs.getPlayerId() == 0) {
-                            pgs.setPlayerId(1);
-                        } else {
-                            pgs.setPlayerId(0);
-                        }
+                pgs.setCurrValueDie(rand.nextInt(6) + 1);
+                while (pgs.getCurrValueDie() != 1) {
+                    pgs.setCurrRunTotal(pgs.getCurrRunTotal() + pgs.getCurrValueDie());
+                }
+                pgs.setCurrRunTotal(0);
+                if (players == 2) {
+                    if (pgs.getPlayerId() == 0) {
+                        pgs.setPlayerId(1);
+                    } else {
+                        pgs.setPlayerId(0);
                     }
                 }
             }
             return true;
+
         } else {
             return false;
         }
+
     }//makeMove
 
     /**
