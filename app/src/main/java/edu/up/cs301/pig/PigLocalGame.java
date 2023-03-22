@@ -50,7 +50,7 @@ public class PigLocalGame extends LocalGame {
     @Override
     protected boolean makeMove(GameAction action) {
         //TODO  You will implement this method
-        int players = getPlayerIdx(action.getPlayer());
+        int players = super.players.length;
         if (action instanceof PigHoldAction) {
             if (pgs.getPlayerId() == 0) {
                 pgs.setPlayerZeroScore(pgs.getCurrRunTotal());
