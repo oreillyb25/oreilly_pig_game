@@ -53,12 +53,12 @@ public class PigLocalGame extends LocalGame {
         int players = super.players.length;
         if (action instanceof PigHoldAction) {
             if (pgs.getPlayerId() == 0) {
-                pgs.setPlayerZeroScore(pgs.getCurrRunTotal());
+                pgs.setPlayerZeroScore(pgs.getPlayerZeroScore() + pgs.getCurrRunTotal());
                 if (players == 2) {
                     pgs.setPlayerId(1);
                 }
             } else {
-                pgs.setPlayerOneScore(pgs.getCurrRunTotal());
+                pgs.setPlayerOneScore(pgs.getPlayerOneScore() + pgs.getCurrRunTotal());
                 if (players == 2) {
                     pgs.setPlayerId(0);
                 }
