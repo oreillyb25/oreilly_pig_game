@@ -70,7 +70,8 @@ public class PigLocalGame extends LocalGame {
             pgs.setCurrValueDie(rand.nextInt(6) + 1);
             if (pgs.getCurrValueDie() != 1) {
                 pgs.setCurrRunTotal(pgs.getCurrRunTotal() + pgs.getCurrValueDie());
-            } else {
+            }
+            else {
                 pgs.setCurrRunTotal(0);
                 if (players == 2) {
                     if (pgs.getPlayerId() == 0) {
@@ -82,7 +83,8 @@ public class PigLocalGame extends LocalGame {
                 }
             }
             return true;
-        } else {
+        }
+        else {
             return false;
         }
 
@@ -107,7 +109,7 @@ public class PigLocalGame extends LocalGame {
     @Override
     protected String checkIfGameOver() {
         //TODO  You will implement this method
-        String still_playing = "game still playing...";
+        //String still_playing = "game still playing...";
         String win;
         if (pgs.getPlayerOneScore() >= 50) {
             win = pgs.getPlayerId() + "has won, game over!";
@@ -117,7 +119,7 @@ public class PigLocalGame extends LocalGame {
             win = pgs.getPlayerId() + "has won, game over!";
             return win;
         }
-        return still_playing;
+        return null;
     }
 
 }// class PigLocalGame
