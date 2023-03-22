@@ -29,6 +29,8 @@ public class PigComputerPlayer extends GameComputerPlayer {
     @Override
     protected void receiveInfo(GameInfo info) {
         // TODO  You will implement this method
+        PigGameState pgs = new PigGameState((PigGameState)info);
+
     }//receiveInfo
 
 }
