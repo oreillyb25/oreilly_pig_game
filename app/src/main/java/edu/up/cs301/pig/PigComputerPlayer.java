@@ -42,10 +42,10 @@ public class PigComputerPlayer extends GameComputerPlayer {
         else{
             if(Math.random() < 0.5){
                 //this.sendAction(pha);
-                sendAction(pha);
+                plg.sendAction(pha);
             }
             else{
-                sendAction(pra);
+                plg.sendAction(pra);
             }
         }
     }//receiveInfo
