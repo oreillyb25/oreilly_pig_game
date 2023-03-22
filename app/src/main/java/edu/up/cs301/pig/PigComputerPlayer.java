@@ -37,6 +37,11 @@ public class PigComputerPlayer extends GameComputerPlayer {
     @Override
     protected void receiveInfo(GameInfo info) {
         // TODO  You will implement this method
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         PigGameState pgs = new PigGameState((PigGameState)info);
         if(pgs.getPlayerId() != this.playerNum){
             return;
@@ -46,12 +51,11 @@ public class PigComputerPlayer extends GameComputerPlayer {
                 //this.sendAction(pha);
                 //plg.sendAction(pha);
                 super.game.sendAction(pha);
-                SystemClock.sleep(2000);
             }
             else{
                 //plg.sendAction(pra);
                 super.game.sendAction(pra);
-                SystemClock.sleep(2000);
+                //SystemClock.sleep(2000);
             }
         }
     }//receiveInfo
