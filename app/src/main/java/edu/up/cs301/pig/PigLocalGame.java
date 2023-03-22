@@ -7,6 +7,8 @@ import edu.up.cs301.game.infoMsg.GameState;
 
 import android.util.Log;
 
+import java.util.Random;
+
 // dummy comment, to see if commit and push work from srvegdahl account
 
 /**
@@ -48,7 +50,40 @@ public class PigLocalGame extends LocalGame {
     @Override
     protected boolean makeMove(GameAction action) {
         //TODO  You will implement this method
-        return false;
+        if(action instanceof PigHoldAction) {
+            if (pgs.getPlayerId() == 0) {
+                pgs.setPlayerZeroScore(pgs.getCurrRunTotal());
+                pgs.setPlayerId(1);
+            }
+            else {
+                pgs.setPlayerOneScore(pgs.getCurrRunTotal());
+                pgs.setPlayerId(0);
+            }
+            pgs.setCurrRunTotal(0);
+            return true;
+        }
+        else if(action instanceof PigRollAction) {
+            Random rand = new Random();
+            int dieVal;
+            if(pgs.getPlayerId() == 0) {
+                dieVal = rand.nextInt(6) + 1;
+                if (dieVal != 1) {
+                    pgs.setCurrRunTotal(pgs.getCurrRunTotal() + dieVal);
+                }
+                else {
+                    pgs.setCurrRunTotal(0);
+                    if (pgs.getPlayerId() == 0) {
+                        pgs.setPlayerId(1);
+                    } else {
+                        pgs.setPlayerId(0);
+                    }
+                }
+            }
+            return true;
+        }
+        else {
+            return false;
+        }
     }//makeMove
 
     /**
@@ -57,6 +92,8 @@ public class PigLocalGame extends LocalGame {
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
         //TODO  You will implement this method
+        PigGameState copy = new PigGameState(pgs);
+        p.sendInfo(copy);
     }//sendUpdatedSate
 
     /**
