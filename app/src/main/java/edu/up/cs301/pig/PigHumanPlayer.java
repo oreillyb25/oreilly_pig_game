@@ -61,7 +61,49 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
     @Override
     public void receiveInfo(GameInfo info) {
         //TODO You will implement this method to receive state objects from the game
-        System.out.println("test");
+
+        if (info instanceof PigGameState) {
+            int playerNumber = super.playerNum;
+            int zeroScore = ((PigGameState) info).getPlayerZeroScore();
+            int oneScore =  ((PigGameState) info).getPlayerOneScore();
+
+            if(playerNumber == 0){
+                playerScoreTextView.setText(Integer.toString(zeroScore));
+                oppScoreTextView.setText(Integer.toString(oneScore));
+            }
+            else{
+                oppScoreTextView.setText(Integer.toString(zeroScore));
+                playerScoreTextView.setText(Integer.toString(oneScore));
+            }
+
+            int currRunningTotal = ((PigGameState) info).getCurrRunTotal();
+            int diceVal = ((PigGameState) info).getCurrValueDie();
+
+            turnTotalTextView.setText(Integer.toString(currRunningTotal));
+
+            if (diceVal == 1) {
+              dieImageButton.setImageResource(R.drawable.face1);
+            }
+            else if (diceVal == 2) {
+                dieImageButton.setImageResource(R.drawable.face2);
+            }
+            else if (diceVal == 3) {
+                dieImageButton.setImageResource(R.drawable.face3);
+            }
+            else if (diceVal == 4) {
+                dieImageButton.setImageResource(R.drawable.face4);
+            }
+            else if (diceVal == 5) {
+                dieImageButton.setImageResource(R.drawable.face5);
+            }
+            else if (diceVal == 6) {
+                dieImageButton.setImageResource(R.drawable.face6);
+            }
+
+        }
+        else {
+            flash(100, 2);
+        }
     }//receiveInfo
 
     /**
