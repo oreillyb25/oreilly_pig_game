@@ -18,7 +18,7 @@ public class PigComputerPlayer extends GameComputerPlayer {
     /**
      * ctor does nothing extra
      */
-    PigLocalGame plg = new PigLocalGame();
+    //PigLocalGame plg = new PigLocalGame();
     PigHoldAction pha = new PigHoldAction(this);
     PigRollAction pra = new PigRollAction(this);
     //Random r = new Random();
@@ -36,16 +36,18 @@ public class PigComputerPlayer extends GameComputerPlayer {
     protected void receiveInfo(GameInfo info) {
         // TODO  You will implement this method
         PigGameState pgs = new PigGameState((PigGameState)info);
-        if(!plg.canMove(pgs.getPlayerId())){
+        if(pgs.getPlayerId() != this.playerNum){
             return;
         }
         else{
             if(Math.random() < 0.5){
                 //this.sendAction(pha);
-                plg.sendAction(pha);
+                //plg.sendAction(pha);
+                super.game.sendAction(pha);
             }
             else{
-                plg.sendAction(pra);
+                //plg.sendAction(pra);
+                super.game.sendAction(pra);
             }
         }
     }//receiveInfo
