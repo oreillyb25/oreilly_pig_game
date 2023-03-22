@@ -71,6 +71,7 @@ public class PigLocalGame extends LocalGame {
             if (pgs.getPlayerId() == 0) {
                 pgs.setCurrValueDie(rand.nextInt(6) + 1);
                 while (pgs.getCurrValueDie() != 1) {
+                    pgs.setCurrValueDie(rand.nextInt(6) + 1);
                     pgs.setCurrRunTotal(pgs.getCurrRunTotal() + pgs.getCurrValueDie());
                 }
                 pgs.setCurrRunTotal(0);
