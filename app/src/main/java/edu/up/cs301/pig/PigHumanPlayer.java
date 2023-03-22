@@ -7,6 +7,7 @@ import edu.up.cs301.game.infoMsg.GameInfo;
 
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -117,13 +118,21 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
         //TODO  You will implement this method to send appropriate action objects to the game
         PigHoldAction pha = new PigHoldAction(this);
         PigRollAction pra = new PigRollAction(this);
-
+        //Button hold = findViewById(R.id.holdButton);
         if (button.getId() == R.id.holdButton) {
             super.game.sendAction(pha);
         }
         else if (button.getId() == R.id.dieButton) {
             super.game.sendAction(pra);
         }
+        super.myHandler = new Handler();
+        myHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+               button.setBackgroundColor(Color.WHITE);
+            }
+        }, 2000)
+
     }// onClick
 
     /**
