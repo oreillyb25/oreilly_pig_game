@@ -67,13 +67,10 @@ public class PigLocalGame extends LocalGame {
             return true;
         } else if (action instanceof PigRollAction) {
             Random rand = new Random();
-            //int dieVal;
-            if (pgs.getPlayerId() == 0) {
-                pgs.setCurrValueDie(rand.nextInt(6) + 1);
-                while (pgs.getCurrValueDie() != 1) {
-                    pgs.setCurrValueDie(rand.nextInt(6) + 1);
-                    pgs.setCurrRunTotal(pgs.getCurrRunTotal() + pgs.getCurrValueDie());
-                }
+            pgs.setCurrValueDie(rand.nextInt(6) + 1);
+            if (pgs.getCurrValueDie() != 1) {
+                pgs.setCurrRunTotal(pgs.getCurrRunTotal() + pgs.getCurrValueDie());
+            } else {
                 pgs.setCurrRunTotal(0);
                 if (players == 2) {
                     if (pgs.getPlayerId() == 0) {
@@ -81,10 +78,10 @@ public class PigLocalGame extends LocalGame {
                     } else {
                         pgs.setPlayerId(0);
                     }
+
                 }
             }
             return true;
-
         } else {
             return false;
         }
