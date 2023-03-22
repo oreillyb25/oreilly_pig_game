@@ -123,7 +123,7 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
         //Button hold = findViewById(R.id.holdButton);
         if (button.getId() == R.id.holdButton) {
             super.game.sendAction(pha);
-            //SystemClock.sleep(2000);
+            //ystemClock.sleep(2000);
         }
         else if (button.getId() == R.id.dieButton) {
             super.game.sendAction(pra);
