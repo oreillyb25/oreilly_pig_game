@@ -70,20 +70,20 @@ public class PigLocalGame extends LocalGame {
             //int dieVal;
             if (pgs.getPlayerId() == 0) {
                 pgs.setCurrValueDie(rand.nextInt(6) + 1);
-                if (pgs.getCurrValueDie() != 1) {
+                while (pgs.getCurrValueDie() != 1) {
                     pgs.setCurrRunTotal(pgs.getCurrRunTotal() + pgs.getCurrValueDie());
-                } else {
-                    pgs.setCurrRunTotal(0);
-                    if (players == 2) {
-                        if (pgs.getPlayerId() == 0) {
-                            pgs.setPlayerId(1);
-                        } else {
-                            pgs.setPlayerId(0);
-                        }
+                }
+                pgs.setCurrRunTotal(0);
+                if (players == 2) {
+                    if (pgs.getPlayerId() == 0) {
+                        pgs.setPlayerId(1);
+                    } else {
+                        pgs.setPlayerId(0);
                     }
                 }
             }
             return true;
+
         } else {
             return false;
         }
