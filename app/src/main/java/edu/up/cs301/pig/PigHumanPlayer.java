@@ -8,6 +8,7 @@ import edu.up.cs301.game.infoMsg.GameInfo;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -121,17 +122,12 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
         //Button hold = findViewById(R.id.holdButton);
         if (button.getId() == R.id.holdButton) {
             super.game.sendAction(pha);
+            //SystemClock.sleep(2000);
         }
         else if (button.getId() == R.id.dieButton) {
             super.game.sendAction(pra);
         }
-        super.myHandler = new Handler();
-        myHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-               button.setBackgroundColor(Color.WHITE);
-            }
-        }, 2000)
+
 
     }// onClick
 

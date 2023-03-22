@@ -1,5 +1,7 @@
 package edu.up.cs301.pig;
 
+import android.os.SystemClock;
+
 import java.util.Random;
 
 import edu.up.cs301.game.GameComputerPlayer;
@@ -44,10 +46,12 @@ public class PigComputerPlayer extends GameComputerPlayer {
                 //this.sendAction(pha);
                 //plg.sendAction(pha);
                 super.game.sendAction(pha);
+                SystemClock.sleep(2000);
             }
             else{
                 //plg.sendAction(pra);
                 super.game.sendAction(pra);
+                SystemClock.sleep(2000);
             }
         }
     }//receiveInfo
